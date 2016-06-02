@@ -6,7 +6,7 @@ public class mergeSort
 {
 	public static void main(String[] args) 
 	{
-		int[] random = randomIntArray(100);
+		int[] random = randomIntArray(10);
 		int[] temp = new int[1000];
 		System.out.println(Arrays.toString(random));
 		mergesort(random, temp,0, random.length - 1);
@@ -23,33 +23,33 @@ public class mergeSort
 		return random;
 	}
 	
-	public static void mergesort(int[] A, int[] temp,int p,int r)
+	public static void mergesort(int[] A, int[] temp,int low,int high)
 	{
-		if(p<r)
+		if(low<high)
 		{
-			int q = (p+r)/2;
-			mergesort(A,temp,p,q);
-			mergesort(A,temp,q+1,r);
-			merge(A,temp,p,q,r);
+			int middle = (low + high)/2;
+			mergesort(A,temp,low,middle);
+			mergesort(A,temp,middle+1,high);
+			merge(A,temp,low,middle,high);
 		}
 	}
 	
-	public static void merge(int[] A, int[] temp, int p, int q, int r)
+	public static void merge(int[] A, int[] temp, int low, int middle, int high)
 	{
-		int i = p;
-		int j = q+1;
-		for( int k = p; k <= r; k++)
+		int i = low;
+		int j = middle+1;
+		for( int k = low; k <= high; k++)
 		{
 			temp[k] = A[k];
 		}
-		for( int k = p; k <= r; k++)
+		for( int k = low; k <= high; k++)
 		{
-			if(i>q)//left half empty,copy from right
+			if(i>middle)//left half empty,copy from right
 			{
 				A[k]=temp[j];
 				j++;
 			}
-			else if(j>r)//right half empty, copy from left
+			else if(j>high)//right half empty, copy from left
 			{
 				A[k] = temp[i];
 				i++;

@@ -1,14 +1,10 @@
 package sortingAlgorithms;
 
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.Arrays;
-import java.util.Scanner;
-
 
 public class mergeSort 
 {
-	public static void main(String[] args) throws FileNotFoundException
+	public static void main(String[] args) 
 	{
 		int[] random = randomIntArray(100);
 		int[] temp = new int[1000];
